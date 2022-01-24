@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:58:45 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/24 21:35:23 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/01/24 22:27:28 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int				tab_len(char **tab);
 void			free_tab(char **tab);
 void			free_conf(t_map_config conf);
 void			free_strs(char *s1, char *s2, char *s3, char *s4);
+int				get_width(char **tab);
+char			**add_spaces(char **map);
 
 int				set_colors(t_map_config *conf);
 

@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 14:15:05 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/24 21:33:22 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/01/24 22:29:18 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ void	print_map_conf(t_map_config	conf)
 	printf("======================== MAP ========================\n");
 	for (int i = 0; conf.map[i]; i++)
 	{
+		printf("=>");
 		for (int j = 0; conf.map[i][j]; j++)
 			printf("%c", conf.map[i][j]);
-		printf("\n");
+		printf("<=\n");
 	}
 	printf("=====================================================\n");
 }
@@ -54,4 +55,20 @@ int	print_error(char *s)
 {
 	printf("%s\n", s);
 	return (1);
+}
+
+int	get_width(char **tab)
+{
+	size_t	ret;
+	int		i;
+
+	i = 0;
+	ret = 0;
+	while (tab && tab[i])
+	{
+		if (ft_strlen(tab[i]) > ret)
+			ret = ft_strlen(tab[i]);
+		i++;
+	}
+	return (ret);
 }

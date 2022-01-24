@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:24:29 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/24 21:23:36 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/01/24 22:53:51 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,27 @@ char	*set_begin(int fd)
 
 int	set_map(t_map_config *conf, char *s)
 {
+	char	**tmp;
 	char	**map;
 
 	if (!s)
 		return (1);
-	map = ft_split(s, '-');
-	if (!map)
+	tmp = ft_split(s, '-');
+	if (!tmp)
+	{
+		free(s);
 		return (1);
+	}
+	map = add_spaces(tmp);
+	if (!map)
+	{
+		free_tab(tmp);
+		free(s);
+		return (1);
+	}
 	conf->map = map;
 	free(s);
+	free_tab(tmp);
 	return (0);
 }
 
@@ -84,6 +96,6 @@ int	map_parsing(t_map_config *conf, int fd)
 		else
 			break ;
 	}
-	free_strs(buff, tmp, NULL, NULL);
+	free_strs(buff, NULL, NULL, NULL);
 	return (set_map(conf, str));
 }

@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:34:26 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/24 22:05:58 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/01/24 22:54:08 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	parse_file(char *path, t_map_config *conf)
 	}
 	if (map_parsing(conf, fd))
 	{
-		printf("Error\nsomething went wrong when parsing the map.\n");
+		printf("Error\nWrong map configuration.\n");
 		close(fd);
 		return (1);
 	}
