@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 14:15:05 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/24 18:40:17 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:16:09 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ void	print_map_conf(t_map_config	conf)
 	printf("EA : %25.25s | EXISTS : %d |\n", conf.ea.path, conf.ea.exists);
 	printf("F  : %25X | EXISTS : %d | RAW : %8s |\n", conf.f.color, conf.f.exists, conf.f.raw);
 	printf("C  : %25X | EXISTS : %d | RAW : %8s |\n", conf.c.color, conf.c.exists, conf.c.raw);
+	printf("======================== MAP ========================\n");
+	for (int i = 0; conf.map[i]; i++)
+	{
+		for (int j = 0; conf.map[i][j]; j++)
+			printf("%c", conf.map[i][j]);
+		printf("\n");
+	}
+	printf("=====================================================\n");
 }
 
 int	check_textures(t_map_config *conf)

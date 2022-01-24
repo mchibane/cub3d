@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:58:45 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/24 17:13:48 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:15:53 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_map_config
 	t_texture	we;
 	t_color		f;
 	t_color		c;
+	char		**map;
 }				t_map_config;
 
 int				parse_file(char *path, t_map_config *conf);
@@ -60,7 +61,10 @@ int				check_textures(t_map_config *conf);
 int				tab_len(char **tab);
 void			free_tab(char **tab);
 void			free_conf(t_map_config conf);
+void			free_strs(char *s1, char *s2, char *s3, char *s4);
 
 int				set_colors(t_map_config *conf);
+
+int				map_parsing(t_map_config *conf, int fd);
 
 #endif

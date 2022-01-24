@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:34:26 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/24 18:28:39 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:05:35 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,25 +68,23 @@ int	get_line_info(char *str, t_map_config *conf)
 	return (0);
 }
 
-static int	parse_lines(int fd, t_map_config *conf)
+static int	parse_lines(int fd, t_map_config *conf, int *line)
 {
 	char	*str;
 	int		gnl;
 	int		check;
-	int		line;
 
 	check = 0;
 	gnl = 1;
-	line = 0;
 	while (gnl > 0 && !check)
 	{
 		gnl = get_next_line(fd, &str);
-		line++;
+		(*line)++;
 		if (str[0])
 		{
 			if (get_line_info(str, conf))
 			{
-				printf("Error\nInvalid configuration file. (line %d)\n", line);
+				printf("Error\nInvalid configuration file. (line %d)\n", *line);
 				free(str);
 				return (1);
 			}
@@ -100,7 +98,9 @@ static int	parse_lines(int fd, t_map_config *conf)
 int	parse_file(char *path, t_map_config *conf)
 {
 	int	fd;
+	int	head;
 
+	head = 0;
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{
@@ -108,12 +108,12 @@ int	parse_file(char *path, t_map_config *conf)
 		perror(path);
 		return (1);
 	}
-	if (parse_lines(fd, conf) || set_colors(conf))
+	if (parse_lines(fd, conf, &head) || set_colors(conf))
 	{
 		close(fd);
 		return (1);
 	}
-	print_file(fd);
+	map_parsing(conf, fd);
 	close(fd);
 	return (0);
 }
