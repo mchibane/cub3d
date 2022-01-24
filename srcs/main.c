@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:59:14 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/24 21:07:36 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:35:48 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,10 @@ int	main(int ac, char **av, char **envp)
 {
 	t_map_config	conf;
 
-	(void)av;
-	if (ac != 2 || !envp[0])
-	{
-		printf("Error: Usage: ./cub3D [map_path]\n");
-		envp_error(envp);
-		return (1);
-	}
+	if (ac != 2)
+		return (print_error(E_ARGS));
+	if (!envp[0])
+		return (print_error(E_ENVI));
 	conf = init_map_conf();
 	if (parse_file(av[1], &conf))
 	{

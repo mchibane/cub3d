@@ -6,29 +6,12 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:34:26 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/24 21:27:53 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/01/24 22:05:58 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "libft.h"
-
-void	print_file(int fd)
-{
-	char	*str;
-	int		gnl;
-
-	gnl = 1;
-	printf("============ MAP BELOW ============\n");
-	while (gnl > 0)
-	{
-		gnl = get_next_line(fd, &str);
-		if (str[0])
-			printf("%s\n", str);
-		free(str);
-	}
-	printf("===================================\n");
-}
 
 int	get_path(char **t, t_map_config *m)
 {
@@ -54,7 +37,7 @@ int	get_line_info(char *str, t_map_config *conf)
 	char	**tab;
 
 	tab = ft_split(str, ' ');
-	if (tab_len(tab) != 2 || !tab)
+	if (!tab || tab_len(tab) != 2)
 	{
 		free_tab(tab);
 		return (1);

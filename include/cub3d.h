@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:58:45 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/24 21:15:53 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:35:23 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@
 # define S_TOK "SO"
 # define W_TOK "WE"
 # define E_TOK "EA"
+
+# define E_ARGS "Error\nUsage: ./cub3D [map].cub"
+# define E_ENVI "Error\nPlease don't do this !"
 
 typedef struct s_texture
 {
@@ -56,6 +59,7 @@ int				parse_file(char *path, t_map_config *conf);
 t_map_config	init_map_conf(void);
 
 void			print_map_conf(t_map_config	conf);
+int				print_error(char *s);
 
 int				check_textures(t_map_config *conf);
 int				tab_len(char **tab);

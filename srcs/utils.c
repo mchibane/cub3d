@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 14:15:05 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/24 21:16:09 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:33:22 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,10 @@ int	tab_len(char **tab)
 	while (tab && tab[i])
 		i++;
 	return (i);
+}
+
+int	print_error(char *s)
+{
+	printf("%s\n", s);
+	return (1);
 }
