@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 16:55:18 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/24 18:19:59 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/01/28 14:48:33 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ char			*ft_uitoa_ptr(uintptr_t n, char *base);
 int				get_next_line(int fd, char **line);
 
 int				ft_strequal(char const *s1, char const *s2);
+int				ft_ischarset(char c, char *charset);
 
 #endif
