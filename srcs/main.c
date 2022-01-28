@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:59:14 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/24 21:35:48 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/01/28 14:54:05 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int ac, char **av, char **envp)
 	if (!envp[0])
 		return (print_error(E_ENVI));
 	conf = init_map_conf();
-	if (parse_file(av[1], &conf))
+	if (parse_file(av[1], &conf) || check_map(conf.map))
 	{
 		free_conf(conf);
 		return (1);

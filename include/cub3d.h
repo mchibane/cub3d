@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:58:45 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/24 22:27:28 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/01/28 16:16:01 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@
 
 # define E_ARGS "Error\nUsage: ./cub3D [map].cub"
 # define E_ENVI "Error\nPlease don't do this !"
+
+# define MAP_CHARSET " 01NSWE"
+# define SPAWN "NWES"
 
 typedef struct s_texture
 {
@@ -72,5 +75,6 @@ char			**add_spaces(char **map);
 int				set_colors(t_map_config *conf);
 
 int				map_parsing(t_map_config *conf, int fd);
+int				check_map(char **map);
 
 #endif

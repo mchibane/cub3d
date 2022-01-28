@@ -17,6 +17,7 @@ RM					=	rm -rf
 HEADER				=	$(HEAD_DIR)cub3d.h
 
 SRCS				=	main.c\
+						check_map.c\
 						parsing.c\
 						init.c\
 						utils.c\
