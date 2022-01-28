@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:34:26 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/24 22:54:08 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/01/28 16:44:41 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,16 @@ static int	parse_lines(int fd, t_map_config *conf, int *line)
 	return (0);
 }
 
+static int	ext(char *path)
+{
+	int	i;
+
+	i = ft_strlen(path) - 4;
+	if (ft_strlen(path) < 4 || !ft_strequal(path + i, ".cub"))
+		return (print_error("Error\nConfig file must be .cub extension."));
+	return (0);
+}
+
 int	parse_file(char *path, t_map_config *conf)
 {
 	int	fd;
@@ -91,7 +101,7 @@ int	parse_file(char *path, t_map_config *conf)
 		perror(path);
 		return (1);
 	}
-	if (parse_lines(fd, conf, &head) || set_colors(conf))
+	if (ext(path) || parse_lines(fd, conf, &head) || set_colors(conf))
 	{
 		close(fd);
 		return (1);
