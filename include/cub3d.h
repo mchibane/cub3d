@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:58:45 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/28 16:16:01 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/01/28 18:41:42 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@
 
 # define MAP_CHARSET " 01NSWE"
 # define SPAWN "NWES"
+
+# define WIN_W 800
+# define WIN_H 600
 
 typedef struct s_texture
 {
