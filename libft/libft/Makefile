@@ -6,7 +6,7 @@
 #    By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/18 14:18:04 by mchibane          #+#    #+#              #
-#    Updated: 2022/01/24 18:18:41 by mchibane         ###   ########.fr        #
+#    Updated: 2022/01/28 14:48:48 by mchibane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS		=	ft_atoi.c \
 				ft_isalnum.c \
 				ft_isalpha.c \
 				ft_isascii.c \
+				ft_ischarset.c\
 				ft_isdigit.c \
 				ft_isprint.c \
 				ft_isspace.c\
