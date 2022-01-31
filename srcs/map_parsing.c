@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:24:29 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/24 22:53:51 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/01/31 17:38:00 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,29 +73,43 @@ int	set_map(t_map_config *conf, char *s)
 	return (0);
 }
 
+static int	gnl_loop(char **str, int fd)
+{
+	char	*buff;
+	char	*tmp;
+	int		ret;
+
+	ret = 1;
+	while (ret > 0)
+	{
+		ret = get_next_line(fd, &buff);
+		if (buff[0])
+		{
+			tmp = *str;
+			*str = ft_strjoin(tmp, buff);
+			if (!str)
+			{
+				free_strs(tmp, buff, NULL, NULL);
+				return (1);
+			}
+			add_sep(str);
+			free_strs(tmp, buff, NULL, NULL);
+			continue ;
+		}
+		free(buff);
+		break ;
+	}
+	return (0);
+}
+
 int	map_parsing(t_map_config *conf, int fd)
 {
 	char	*str;
-	char	*tmp;
-	char	*buff;
 
 	str = set_begin(fd);
 	if (!str)
 		return (1);
-	while (get_next_line(fd, &buff) > 0)
-	{
-		if (buff[0])
-		{
-			tmp = str;
-			str = ft_strjoin(tmp, buff);
-			if (!str)
-				break ;
-			add_sep(&str);
-			free_strs(tmp, buff, NULL, NULL);
-		}
-		else
-			break ;
-	}
-	free_strs(buff, NULL, NULL, NULL);
+	if (gnl_loop(&str, fd))
+		return (1);
 	return (set_map(conf, str));
 }
