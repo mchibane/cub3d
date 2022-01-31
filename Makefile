@@ -16,15 +16,18 @@ RM					=	rm -rf
 
 HEADER				=	$(HEAD_DIR)cub3d.h
 
-SRCS				=	main.c\
-						check_map.c\
-						parsing.c\
-						init.c\
-						utils.c\
+SRCS				=	check_map.c\
+						cub3d.c\
+						exit.c\
 						free.c\
-						set_colors.c\
-						map_parsing.c\
+						init.c\
+						main.c\
 						map_fill.c\
+						map_parsing.c\
+						parsing.c\
+						set_colors.c\
+						set_textures.c\
+						utils.c\
 
 OBJS				=	$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 

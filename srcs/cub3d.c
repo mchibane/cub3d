@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/24 12:59:14 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/31 18:48:58 by mchibane         ###   ########.fr       */
+/*   Created: 2022/01/31 18:39:31 by mchibane          #+#    #+#             */
+/*   Updated: 2022/01/31 19:43:53 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	envp_error(char **envp)
+int	cub3d(t_map_config *conf)
 {
-	if (!envp[0])
-		printf("Please don't do that !\n");
-}
+	t_window	win;
 
-int	main(int ac, char **av, char **envp)
-{
-	t_map_config	conf;
-
-	if (ac != 2)
-		return (print_error(E_ARGS));
-	if (!envp[0])
-		return (print_error(E_ENVI));
-	conf = init_map_conf();
-	if (parse_file(av[1], &conf) || check_map(conf.map))
+	win = init_window();
+	if (set_textures(conf, &win))
 	{
-		free_conf(conf);
+		printf("Error\nInvalid textures.\n");
+		c3d_exit(conf, &win);
 		return (1);
 	}
-	printf("Welcome to Cub3D !\n");
-	print_map_conf(conf);
-	cub3d(&conf);
-	free_conf(conf);
+	c3d_exit(conf, &win);
 	return (0);
 }
