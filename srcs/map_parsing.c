@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:24:29 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/31 17:38:00 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/01/31 18:27:54 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ char	*set_begin(int fd)
 		if (ret[0])
 			break ;
 		free(ret);
+		ret = NULL;
 	}
-	if (add_sep(&ret))
+	if (!ret || add_sep(&ret))
 		return (NULL);
 	return (ret);
 }
