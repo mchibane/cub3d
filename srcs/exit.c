@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 19:32:13 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/31 19:49:38 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/01/31 21:46:45 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,13 @@ static void	free_textures(t_map_config *conf, t_window *win)
 		mlx_destroy_image(win->mlx_ptr, conf->ea.img.img_ptr);
 }
 
-void	c3d_exit(t_map_config *conf, t_window *win)
+int	c3d_exit(t_data *data)
 {
-	free_textures(conf, win);
-	if (win->win_ptr != NULL)
+	free_textures(data->conf, data->win);
+	if (data->win->win_ptr != NULL)
 	{
-		mlx_destroy_window(win->mlx_ptr, win->win_ptr);
-		win->win_ptr = NULL;
+		mlx_destroy_window(data->win->mlx_ptr, data->win->win_ptr);
+		data->win->win_ptr = NULL;
 	}
-	mlx_destroy_image(win->mlx_ptr, win->img.img_ptr);
-	mlx_destroy_display(win->mlx_ptr);
-	free(win->mlx_ptr);
+	return (0);
 }

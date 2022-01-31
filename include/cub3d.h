@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:58:45 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/31 19:41:15 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/01/31 21:36:50 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <math.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
 # include "libft.h"
 # include "mlx.h"
 
@@ -81,6 +83,12 @@ typedef struct s_map_config
 	char		**map;
 }				t_map_config;
 
+typedef struct s_data
+{
+	t_window		*win;
+	t_map_config	*conf;
+}				t_data;
+
 int				parse_file(char *path, t_map_config *conf);
 t_map_config	init_map_conf(void);
 t_window		init_window(void);
@@ -103,6 +111,6 @@ int				map_parsing(t_map_config *conf, int fd);
 int				check_map(char **map);
 
 int				cub3d(t_map_config *conf);
-void			c3d_exit(t_map_config *conf, t_window *win);
+int				c3d_exit(t_data *data);
 
 #endif
