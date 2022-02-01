@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:58:45 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/31 21:36:50 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/01 16:00:41 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,8 @@ int				check_map(char **map);
 
 int				cub3d(t_map_config *conf);
 int				c3d_exit(t_data *data);
+
+int				input(int keysym, t_data *data);
+int				raycasting(t_data *data);
 
 #endif

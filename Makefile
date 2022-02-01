@@ -21,10 +21,12 @@ SRCS				=	check_map.c\
 						exit.c\
 						free.c\
 						init.c\
+						input.c\
 						main.c\
 						map_fill.c\
 						map_parsing.c\
 						parsing.c\
+						raycasting.c\
 						set_colors.c\
 						set_textures.c\
 						utils.c\

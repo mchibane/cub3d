@@ -6,25 +6,11 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 18:39:31 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/01 15:50:57 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/01 15:59:36 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	lol(t_data *data)
-{
-	printf("OK BYE %s\n", data->conf->ea.path);
-	sleep(1);
-	return (0);
-}
-
-int	input(int keysym, t_data *data)
-{
-	if (keysym == XK_Escape)
-		c3d_exit(data);
-	return (0);
-}
 
 int	cub3d(t_map_config *conf)
 {
@@ -36,7 +22,7 @@ int	cub3d(t_map_config *conf)
 	data.conf = conf;
 	if (!set_textures(conf, &win))
 	{
-		mlx_loop_hook(data.win->mlx_ptr, &lol, &data);
+		mlx_loop_hook(data.win->mlx_ptr, &raycasting, &data);
 		mlx_hook(data.win->win_ptr, KeyPress, KeyPressMask, &input, &data);
 		mlx_hook(data.win->win_ptr, DestroyNotify, StructureNotifyMask,
 			&c3d_exit, &data);
