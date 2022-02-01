@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 18:39:31 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/31 22:07:09 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/01 15:50:57 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,19 @@ int	cub3d(t_map_config *conf)
 	win = init_window();
 	data.win = &win;
 	data.conf = conf;
-	if (set_textures(conf, &win))
+	if (!set_textures(conf, &win))
+	{
+		mlx_loop_hook(data.win->mlx_ptr, &lol, &data);
+		mlx_hook(data.win->win_ptr, KeyPress, KeyPressMask, &input, &data);
+		mlx_hook(data.win->win_ptr, DestroyNotify, StructureNotifyMask,
+			&c3d_exit, &data);
+		mlx_loop(data.win->mlx_ptr);
+	}
+	else
 	{
 		printf("Error\nInvalid textures.\n");
 		c3d_exit(&data);
-		return (1);
 	}
-	mlx_loop_hook(data.win->mlx_ptr, &lol, &data);
-	mlx_hook(data.win->win_ptr, KeyPress, KeyPressMask, &input, &data);
-	mlx_hook(data.win->win_ptr, DestroyNotify, StructureNotifyMask,
-		&c3d_exit, &data);
-	mlx_loop(data.win->mlx_ptr);
 	mlx_destroy_image(data.win->mlx_ptr, data.win->img.img_ptr);
 	mlx_destroy_display(data.win->mlx_ptr);
 	free(data.win->mlx_ptr);

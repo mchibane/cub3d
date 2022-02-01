@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:34:26 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/28 16:44:41 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/01 15:50:20 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,23 +58,23 @@ static int	parse_lines(int fd, t_map_config *conf, int *line)
 	int		check;
 
 	check = 0;
-	gnl = 1;
+	gnl = get_next_line(fd, &str);
 	while (gnl > 0 && !check)
 	{
-		gnl = get_next_line(fd, &str);
 		(*line)++;
 		if (str[0])
 		{
 			if (get_line_info(str, conf))
 			{
-				printf("Error\nInvalid configuration file. (line %d)\n", *line);
 				free(str);
 				return (1);
 			}
 		}
 		check = check_textures(conf);
 		free(str);
+		gnl = get_next_line(fd, &str);
 	}
+	free(str);
 	return (0);
 }
 
@@ -101,8 +101,9 @@ int	parse_file(char *path, t_map_config *conf)
 		perror(path);
 		return (1);
 	}
-	if (ext(path) || parse_lines(fd, conf, &head) || set_colors(conf))
+	if (ext(path) || parse_lines(fd, conf, &head) || !head || set_colors(conf))
 	{
+		printf("Error\nInvalid configuration file. (line %d)\n", head);
 		close(fd);
 		return (1);
 	}
