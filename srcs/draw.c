@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:52:40 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/01 18:52:59 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/02 17:43:02 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,9 @@ void	draw(t_data *data, float dist, int x, int side)
 	else
 		wall_color = 0x8f3420;
 	while (y < start)
-	{
-		img_pix_put(&data->win->img, x, y, data->conf->c.color);
-		y++;
-	}
+		img_pix_put(&data->win->img, x, y++, data->conf->c.color);
 	while (y < end)
-	{
-		img_pix_put(&data->win->img, x, y, wall_color);
-		y++;
-	}
+		img_pix_put(&data->win->img, x, y++, wall_color);
 	while (y < WIN_H)
-	{
-		img_pix_put(&data->win->img, x, y, data->conf->f.color);
-		y++;
-	}
+		img_pix_put(&data->win->img, x, y++, data->conf->f.color);
 }

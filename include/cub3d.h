@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:58:45 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/02 16:39:27 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/02 16:53:38 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 # define WIN_H 600
 
 # define FOV 0.6f
-# define M_SP 1
+# define M_SP 0.5f
 # define R_SP 0.025f
 
 /*

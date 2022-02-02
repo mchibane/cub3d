@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 16:57:13 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/02 16:42:32 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/02 17:53:27 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ t_vec2	get_player_pos(char **map)
 		{
 			if (ft_ischarset(map[y][x], SPAWN))
 			{
-				ret.y = (float)y + 0.5f;
-				ret.x = (float)x + 0.5f;
+				ret.y = (float)y + 0.49f;
+				ret.x = (float)x + 0.49f;
 				break ;
 			}
 			x++;
