@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:58:45 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/02 21:12:39 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/02 22:12:07 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ typedef struct s_texture
 {
 	char	*path;
 	t_img	img;
+	int		h;
+	int		w;
 	int		exists;
 }				t_texture;
 

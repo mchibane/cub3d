@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:11 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/02 21:17:21 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/02 21:38:16 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	raycasting(t_data *data)
 	{
 		// ray position and direction
 		float	cam_x = 2 * i / (float)WIN_W - 1.0f;
+
 		float	ray_x = player_dir.x + plane.x * cam_x;
 		float	ray_y = player_dir.y + plane.y * cam_x;
 
@@ -42,6 +43,7 @@ int	raycasting(t_data *data)
 		//length of ray from one x or y side to next x or y side
 		float	d_dist_x = (ray_x == 0) ? FLT_MAX : f_abs(1 / ray_x);
 		float	d_dist_y = (ray_y == 0) ? FLT_MAX : f_abs(1 / ray_y);
+
 		float	perp_wall; // perpendicular wall distance
 
 		// what direction to step in x or y direction (+1 or -1)
@@ -49,6 +51,7 @@ int	raycasting(t_data *data)
 		int	step_y;
 
 		int	hit = 0;	// was there a wall hit ?
+
 		int	side;		// was a NO-SO or EA-WE wall hit ?
 
 		// calculate step and initial side_dist
