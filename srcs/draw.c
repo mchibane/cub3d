@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:52:40 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/02 19:38:55 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/02 21:13:04 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ static int	set_wall_color(int side)
 	int	ret;
 
 	if (side == NO)
-		ret = 0x857673;
+		ret = RED;
 	else if (side == SO)
-		ret = 0xa1928f;
+		ret = BLUE;
 	else if (side == WE)
-		ret = 0x661200;
+		ret = GREEN;
 	else if (side == EA)
-		ret = 0xdd998A;
+		ret = YELLOW;
 	return (ret);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:58:45 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/02 19:44:20 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/02 21:12:39 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@
 # define M_SP 0.5f
 # define R_SP 0.07f
 # define S_SP 0.1f
+
+# define RED 0xff0000
+# define GREEN 0x00ff00
+# define BLUE 0x0000ff
+# define YELLOW 0xe8ff00
 
 typedef enum e_side
 {

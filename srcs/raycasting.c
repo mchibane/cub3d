@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:11 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/02 19:34:24 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/02 21:17:21 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,18 +78,24 @@ int	raycasting(t_data *data)
 			{
 				side_dist_x += d_dist_x;
 				map_x += step_x;
-				side = 0;
+				if (ray_x > 0)
+					side = EA;
+				else
+					side = WE;
 			}
 			else
 			{
 				side_dist_y += d_dist_y;
 				map_y += step_y;
-				side = 1;
+				if (ray_y < 0)
+					side = NO;
+				else
+					side = SO;
 			}
 			if (data->conf->map[map_y][map_x] == '1')
 				hit = 1;
 		}
-		if (side == 0)
+		if (side > 1)
 			perp_wall = (side_dist_x - d_dist_x);
 		else
 			perp_wall = (side_dist_y - d_dist_y);
