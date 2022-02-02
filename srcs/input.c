@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:03 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/02 17:53:16 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/02 19:17:13 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	rotate(t_data	*data, int keysymm)
 		* cos(dir * R_SP) - data->ray->plane.y * sin(dir * R_SP);
 	data->ray->plane.y = old_plane_x
 		* sin(dir * R_SP) + data->ray->plane.y * cos(dir * R_SP);
+	printf("DIR X : %f DIR Y : %f\n\n", data->ray->player_dir.x, data->ray->player_dir.y);
 }
 
 void	walk(t_data	*data, int keysym)
@@ -66,10 +67,10 @@ void	strafe(t_data *data, int keysym)
 	dir = 1;
 	if (keysym == XK_a)
 		dir = -1;
-	dir_x = data->ray->player_dir.x;
-	dir_y = data->ray->player_dir.y;
-	x = data->ray->player_pos.x + (dir * dir_y * M_SP);
-	y = data->ray->player_pos.y + (dir * dir_x * M_SP);
+	dir_x = data->ray->plane.x;
+	dir_y = data->ray->plane.y;
+	x = data->ray->player_pos.x + (dir * dir_x * S_SP);
+	y = data->ray->player_pos.y + (dir * dir_y * S_SP);
 	if (data->conf->map[(int)(y)][(int)(x)] != '1')
 	{
 		data->ray->player_pos.x = x;

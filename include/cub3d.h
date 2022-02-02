@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:58:45 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/02 16:53:38 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/02 19:17:04 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,13 @@
 # define MAP_CHARSET " 01NSWE"
 # define SPAWN "NWES"
 
-# define WIN_W 800
-# define WIN_H 600
+# define WIN_W 1280
+# define WIN_H 720
 
 # define FOV 0.6f
 # define M_SP 0.5f
-# define R_SP 0.025f
+# define R_SP 0.07f
+# define S_SP 0.2f
 
 /*
 **	VECTOR 2
