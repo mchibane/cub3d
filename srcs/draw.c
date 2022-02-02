@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:52:40 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/02 17:43:02 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/02 19:38:55 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	img_pix_put(t_img *img, int x, int y, int color)
 	}
 }
 
-int	wall_end(int height)
+static int	wall_end(int height)
 {
 	int	ret;
 
@@ -39,13 +39,28 @@ int	wall_end(int height)
 	return (ret);
 }
 
-int	wall_start(int height)
+static int	wall_start(int height)
 {
 	int	ret;
 
 	ret = (-height / 2) + (WIN_H / 2);
 	if (ret < 0)
 		ret = 0;
+	return (ret);
+}
+
+static int	set_wall_color(int side)
+{
+	int	ret;
+
+	if (side == NO)
+		ret = 0x857673;
+	else if (side == SO)
+		ret = 0xa1928f;
+	else if (side == WE)
+		ret = 0x661200;
+	else if (side == EA)
+		ret = 0xdd998A;
 	return (ret);
 }
 
@@ -61,10 +76,7 @@ void	draw(t_data *data, float dist, int x, int side)
 	y = 0;
 	start = wall_start(height);
 	end = wall_end(height);
-	if (side)
-		wall_color = 0xbb2e10;
-	else
-		wall_color = 0x8f3420;
+	wall_color = set_wall_color(side);
 	while (y < start)
 		img_pix_put(&data->win->img, x, y++, data->conf->c.color);
 	while (y < end)

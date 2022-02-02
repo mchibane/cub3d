@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:58:45 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/02 19:17:04 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/02 19:44:20 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,19 @@
 # define WIN_H 720
 
 # define FOV 0.6f
+
 # define M_SP 0.5f
 # define R_SP 0.07f
-# define S_SP 0.2f
+# define S_SP 0.1f
+
+typedef enum e_side
+{
+	NO,
+	SO,
+	EA,
+	WE,
+	MAX
+}			t_side;
 
 /*
 **	VECTOR 2
@@ -157,5 +167,8 @@ t_vec2			get_plane_dir(t_map_config *conf);
 float			f_abs(float f);
 
 void			draw(t_data *data, float dist, int x, int side);
+
+int				move(int keysym, t_data *data);
+int				turn(int keysym, t_data *data);
 
 #endif
