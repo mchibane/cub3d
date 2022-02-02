@@ -18,6 +18,7 @@ HEADER				=	$(HEAD_DIR)cub3d.h
 
 SRCS				=	check_map.c\
 						cub3d.c\
+						draw.c\
 						exit.c\
 						free.c\
 						init.c\
@@ -27,6 +28,8 @@ SRCS				=	check_map.c\
 						map_parsing.c\
 						parsing.c\
 						raycasting.c\
+						rc_init.c\
+						rc_utils.c\
 						set_colors.c\
 						set_textures.c\
 						utils.c\

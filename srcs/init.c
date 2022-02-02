@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 14:10:47 by mchibane          #+#    #+#             */
-/*   Updated: 2022/01/31 19:47:47 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/01 17:03:50 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ t_map_config	init_map_conf(void)
 	ret.f = init_color();
 	ret.c = init_color();
 	ret.map = NULL;
+	ret.spawn_dir = 0;
 	return (ret);
 }
 
