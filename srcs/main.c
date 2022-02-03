@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:59:14 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/02 18:03:52 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:00:45 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	envp_error(char **envp)
 int	main(int ac, char **av, char **envp)
 {
 	t_map_config	conf;
-	t_ray			*ray;
+	t_player		player;
 
 	if (ac != 2)
 		return (print_error(E_ARGS));
@@ -56,10 +56,9 @@ int	main(int ac, char **av, char **envp)
 		free_conf(conf);
 		return (1);
 	}
-	ray = init_ray(&conf);
+	player = init_player(&conf);
 	print_map_conf(conf);
-	cub3d(&conf, ray);
-	free(ray);
+	cub3d(&conf, &player);
 	free_conf(conf);
 	return (0);
 }

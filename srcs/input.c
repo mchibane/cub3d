@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:03 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/02 19:45:26 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:06:42 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ void	rotate(t_data	*data, int keysymm)
 	dir = 1;
 	if (keysymm == XK_Left)
 		dir *= -1;
-	old_dir_x = data->ray->player_dir.x;
-	old_plane_x = data->ray->plane.x;
-	data->ray->player_dir.x = old_dir_x
-		* cos(dir * R_SP) - data->ray->player_dir.y * sin(dir * R_SP);
-	data->ray->player_dir.y = old_dir_x
-		* sin(dir * R_SP) + data->ray->player_dir.y * cos(dir * R_SP);
-	data->ray->plane.x = old_plane_x
-		* cos(dir * R_SP) - data->ray->plane.y * sin(dir * R_SP);
-	data->ray->plane.y = old_plane_x
-		* sin(dir * R_SP) + data->ray->plane.y * cos(dir * R_SP);
-	printf("DIR X : %f DIR Y : %f\n\n", data->ray->player_dir.x, data->ray->player_dir.y);
+	old_dir_x = data->player->dir.x;
+	old_plane_x = data->player->plane.x;
+	data->player->dir.x = old_dir_x
+		* cos(dir * R_SP) - data->player->dir.y * sin(dir * R_SP);
+	data->player->dir.y = old_dir_x
+		* sin(dir * R_SP) + data->player->dir.y * cos(dir * R_SP);
+	data->player->plane.x = old_plane_x
+		* cos(dir * R_SP) - data->player->plane.y * sin(dir * R_SP);
+	data->player->plane.y = old_plane_x
+		* sin(dir * R_SP) + data->player->plane.y * cos(dir * R_SP);
+	printf("DIR X : %f DIR Y : %f\n\n", data->player->dir.x, data->player->dir.y);
 }
 
 void	walk(t_data	*data, int keysym)
@@ -43,16 +43,16 @@ void	walk(t_data	*data, int keysym)
 	float	y;
 
 	dir = 1;
-	dir_x = data->ray->player_dir.x;
-	dir_y = data->ray->player_dir.y;
+	dir_x = data->player->dir.x;
+	dir_y = data->player->dir.y;
 	if (keysym == XK_s)
 		dir = -1;
-	x = data->ray->player_pos.x + (dir * dir_x * M_SP);
-	y = data->ray->player_pos.y + (dir * dir_y * M_SP);
+	x = data->player->pos.x + (dir * dir_x * M_SP);
+	y = data->player->pos.y + (dir * dir_y * M_SP);
 	if (data->conf->map[(int)(y)][(int)(x)] != '1')
 	{
-		data->ray->player_pos.x = x;
-		data->ray->player_pos.y = y;
+		data->player->pos.x = x;
+		data->player->pos.y = y;
 	}
 }
 
@@ -67,14 +67,14 @@ void	strafe(t_data *data, int keysym)
 	dir = 1;
 	if (keysym == XK_a)
 		dir = -1;
-	dir_x = data->ray->plane.x;
-	dir_y = data->ray->plane.y;
-	x = data->ray->player_pos.x + (dir * dir_x * S_SP);
-	y = data->ray->player_pos.y + (dir * dir_y * S_SP);
+	dir_x = data->player->plane.x;
+	dir_y = data->player->plane.y;
+	x = data->player->pos.x + (dir * dir_x * S_SP);
+	y = data->player->pos.y + (dir * dir_y * S_SP);
 	if (data->conf->map[(int)(y)][(int)(x)] != '1')
 	{
-		data->ray->player_pos.x = x;
-		data->ray->player_pos.y = y;
+		data->player->pos.x = x;
+		data->player->pos.y = y;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:11 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/02 21:38:16 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:02:30 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	raycasting(t_data *data)
 	t_vec2	plane;
 
 
-	player_pos = data->ray->player_pos;
-	player_dir = data->ray->player_dir;
-	plane = data->ray->plane;
+	player_pos = data->player->pos;
+	player_dir = data->player->dir;
+	plane = data->player->plane;
 
 	int	i = 0;
 	while (i < WIN_W)

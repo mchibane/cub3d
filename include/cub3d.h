@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:58:45 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/02 22:12:07 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/03 13:59:50 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,24 +126,24 @@ typedef struct s_map_config
 	char		spawn_dir;
 }				t_map_config;
 
-typedef struct s_ray
+typedef struct s_player
 {
-	t_vec2	player_pos;
-	t_vec2	player_dir;
+	t_vec2	pos;
+	t_vec2	dir;
 	t_vec2	plane;
-}				t_ray;
+}				t_player;
 
 typedef struct s_data
 {
 	t_window		*win;
 	t_map_config	*conf;
-	t_ray			*ray;
+	t_player		*player;
 }				t_data;
 
 int				parse_file(char *path, t_map_config *conf);
 t_map_config	init_map_conf(void);
 t_window		init_window(void);
-t_ray			*init_ray(t_map_config *conf);
+t_player		init_player(t_map_config *conf);
 
 void			print_map_conf(t_map_config	conf);
 int				print_error(char *s);
@@ -162,7 +162,7 @@ int				set_textures(t_map_config *conf, t_window *win);
 int				map_parsing(t_map_config *conf, int fd);
 int				check_map(char **map);
 
-int				cub3d(t_map_config *conf, t_ray *ray);
+int				cub3d(t_map_config *conf, t_player *ray);
 int				c3d_exit(t_data *data);
 
 int				input(int keysym, t_data *data);

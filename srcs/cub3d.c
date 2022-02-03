@@ -6,13 +6,13 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 18:39:31 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/02 21:28:06 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:01:15 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	cub3d(t_map_config *conf, t_ray *ray)
+int	cub3d(t_map_config *conf, t_player *player)
 {
 	t_window	win;
 	t_data		data;
@@ -20,7 +20,7 @@ int	cub3d(t_map_config *conf, t_ray *ray)
 	win = init_window();
 	data.win = &win;
 	data.conf = conf;
-	data.ray = ray;
+	data.player = player;
 	if (!set_textures(conf, &win))
 	{
 		mlx_loop_hook(data.win->mlx_ptr, &raycasting, &data);

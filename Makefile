@@ -33,6 +33,7 @@ SRCS				=	check_map.c\
 						set_colors.c\
 						set_textures.c\
 						utils.c\
+						#wall_textures.c\
 
 OBJS				=	$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 
