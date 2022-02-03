@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 14:41:08 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/03 16:19:57 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/03 18:15:24 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ t_ray	init_ray(void)
 	ret.d_dist = empty_vec2();
 	ret.map = empty_ivec2();
 	ret.step = empty_ivec2();
+	ret.line = 0;
 	return (ret);
 }

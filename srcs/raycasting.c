@@ -6,21 +6,11 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:11 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/03 16:46:08 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/03 18:15:56 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-// void	print_ray_info(t_ray *ray)
-// {
-// 	printf("RAY INFO \n");
-// 	printf("DIR X : %f DIR Y : %f\n", ray->dir.x, ray->dir.y);
-// 	printf("S_DIST X : %f S_DIST Y : %f\n", ray->side_dist.x, ray->side_dist.y);
-// 	printf("D_DIST X : %f D_DIST Y : %f\n", ray->d_dist.x, ray->d_dist.y);
-// 	printf("MAP X : %d MAP Y : %d\n", ray->map.x, ray->map.y);
-// 	printf("STEP X : %d STEP Y : %d\n\n", ray->step.x, ray->step.y);
-// }
 
 static int	set_side(t_ray *ray, int dir)
 {
@@ -69,10 +59,11 @@ int	raycasting(t_data *data)
 	float	perp_wall;
 	int		side;
 	t_ray	ray;
+	int		i;
 
 	ray = init_ray();
-	int		i;
 	i = 0;
+	data->ray = &ray;
 	while (i < WIN_W)
 	{
 		update_ray(data, i, &ray);
@@ -81,11 +72,12 @@ int	raycasting(t_data *data)
 			perp_wall = (ray.side_dist.x - ray.d_dist.x);
 		else
 			perp_wall = (ray.side_dist.y - ray.d_dist.y);
-
-		draw(data, perp_wall, i, side);
+		draw(data, perp_wall, side);
 		i++;
 	}
+	data->ray = NULL;
 	if (data->win->win_ptr != NULL)
-		mlx_put_image_to_window(data->win->mlx_ptr, data->win->win_ptr, data->win->img.img_ptr, 0, 0);
+		mlx_put_image_to_window(data->win->mlx_ptr,
+			data->win->win_ptr, data->win->img.img_ptr, 0, 0);
 	return (0);
 }

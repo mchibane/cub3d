@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:59:14 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/03 14:29:30 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/03 18:58:12 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int	main(int ac, char **av, char **envp)
 		return (1);
 	}
 	player = init_player(&conf);
-	print_map_conf(conf);
 	cub3d(&conf, &player);
 	free_conf(conf);
 	return (0);

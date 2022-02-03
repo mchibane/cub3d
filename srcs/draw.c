@@ -6,81 +6,76 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:52:40 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/03 13:49:47 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/03 18:57:04 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	img_pix_put(t_img *img, int x, int y, int color)
+static int	get_text_x(t_data *data, t_texture tex, float dist, int side)
 {
-	char	*pixel;
-	int		i;
+	float	wall_x;
+	int		ret;
 
-	i = img->bpp - 8;
-	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
-	while (i >= 0)
+	if (side > 1)
+		wall_x = data->player->pos.y + dist * data->ray->dir.y;
+	else
+		wall_x = data->player->pos.x + dist * data->ray->dir.x;
+	wall_x -= floorf((wall_x));
+	ret = (int)(wall_x * tex.w);
+	if (side == EA || side == NO)
+		ret = tex.w - ret - 1;
+	return (ret);
+}
+
+static void	wall(t_data *data, t_texture tex, float dist, int height)
+{
+	int		tex_x;
+	int		tex_y;
+	float	step;
+	float	tex_pos;
+	int		y;
+
+	tex_x = get_text_x(data, tex, dist, tex.side);
+	step = 1.0f * tex.h / height;
+	y = wall_start(height);
+	tex_pos = (y - WIN_H / 2 - height / 2) * step;
+	while (y < wall_end(height))
 	{
-		if (img->endian != 0)
-			*pixel++ = (color >> i) & 0xFF;
-		else
-			*pixel++ = (color >> (img->bpp - 8 - i)) & 0xFF;
-		i -= 8;
+		tex_y = (int)tex_pos & (tex.h - 1);
+		tex_pos += step;
+		if (data->win->win_ptr != NULL)
+			img_pix_put(&data->win->img, data->ray->line, y,
+				get_pix_color(&tex.img, tex_x, tex_y));
+		y++;
 	}
 }
 
-static int	wall_end(int height)
+static void	draw_wall(t_data *data, float dist, int side, int height)
 {
-	int	ret;
-
-	ret = (height / 2) + (WIN_H / 2);
-	if (ret >= WIN_H)
-		ret = WIN_H - 1;
-	return (ret);
-}
-
-static int	wall_start(int height)
-{
-	int	ret;
-
-	ret = (-height / 2) + (WIN_H / 2);
-	if (ret < 0)
-		ret = 0;
-	return (ret);
-}
-
-static int	set_wall_color(int side)
-{
-	int	ret;
-
 	if (side == NO)
-		ret = RED;
-	else if (side == SO)
-		ret = BLUE;
-	else if (side == WE)
-		ret = GREEN;
-	else if (side == EA)
-		ret = YELLOW;
-	return (ret);
+		wall(data, data->conf->no, dist, height);
+	if (side == SO)
+		wall(data, data->conf->so, dist, height);
+	if (side == EA)
+		wall(data, data->conf->ea, dist, height);
+	if (side == WE)
+		wall(data, data->conf->we, dist, height);
 }
 
-void	draw(t_data *data, float dist, int x, int side)
+void	draw(t_data *data, float dist, int side)
 {
 	int	height;
 	int	y;
-	int	start;
-	int	end;
-	int	wall_color;
 
 	height = (int)(WIN_H / dist);
 	y = 0;
-	start = wall_start(height);
-	end = wall_end(height);
-	wall_color = set_wall_color(side);
-	while (y < start)
-		img_pix_put(&data->win->img, x, y++, data->conf->c.color);
-	while (y < end)
-		img_pix_put(&data->win->img, x, y++, wall_color);
+	while (y < wall_start(height))
+		img_pix_put(&data->win->img, data->ray->line, y++,
+			data->conf->c.color);
+	draw_wall(data, dist, side, height);
+	y = wall_end(height);
 	while (y < WIN_H)
-		img_pix_put(&data->win->img, x, y++, data->conf->f.color);
+		img_pix_put(&data->win->img, data->ray->line, y++,
+			data->conf->f.color);
 }

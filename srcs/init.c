@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 14:10:47 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/03 14:11:18 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/03 18:28:27 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static t_texture	init_texture(void)
 	ret.path = NULL;
 	ret.exists = 0;
 	ret.img = init_img();
+	ret.side = 0;
 	ret.h = 64;
 	ret.w = 64;
 	return (ret);
@@ -53,9 +54,13 @@ t_map_config	init_map_conf(void)
 	t_map_config	ret;
 
 	ret.no = init_texture();
+	ret.no.side = NO;
 	ret.so = init_texture();
+	ret.so.side = SO;
 	ret.we = init_texture();
+	ret.we.side = WE;
 	ret.ea = init_texture();
+	ret.ea.side = EA;
 	ret.f = init_color();
 	ret.c = init_color();
 	ret.map = NULL;

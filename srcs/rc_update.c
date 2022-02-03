@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 20:46:59 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/03 16:21:47 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/03 18:15:37 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static void	set_sdist(t_data *data, t_ray *ray)
 	else
 	{
 		ray->step.x = 1;
-		ray->side_dist.x = (ray->map.x + 1.0f - data->player->pos.x) * ray->d_dist.x;
+		ray->side_dist.x = (ray->map.x + 1.0f - data->player->pos.x)
+			* ray->d_dist.x;
 	}
 	if (ray->dir.y < 0)
 	{
@@ -53,7 +54,8 @@ static void	set_sdist(t_data *data, t_ray *ray)
 	else
 	{
 		ray->step.y = 1;
-		ray->side_dist.y = (ray->map.y + 1.0f - data->player->pos.y) * ray->d_dist.y;
+		ray->side_dist.y = (ray->map.y + 1.0f - data->player->pos.y)
+			* ray->d_dist.y;
 	}
 }
 
@@ -65,6 +67,7 @@ static void	set_map(t_player *player, t_ray *ray)
 
 void	update_ray(t_data *data, int i, t_ray *ray)
 {
+	ray->line = i;
 	set_rdir(data, i, ray);
 	set_map(data->player, ray);
 	set_ddist(ray);

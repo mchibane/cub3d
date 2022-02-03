@@ -18,6 +18,7 @@ HEADER				=	$(HEAD_DIR)cub3d.h
 
 SRCS				=	check_map.c\
 						cub3d.c\
+						draw_utils.c\
 						draw.c\
 						exit.c\
 						free.c\
@@ -34,7 +35,6 @@ SRCS				=	check_map.c\
 						set_colors.c\
 						set_textures.c\
 						utils.c\
-						#wall_textures.c\
 
 OBJS				=	$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 

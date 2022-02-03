@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:58:45 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/03 16:37:35 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/03 18:57:59 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ typedef struct s_texture
 	int		h;
 	int		w;
 	int		exists;
+	int		side;
 }				t_texture;
 
 typedef struct s_color
@@ -154,6 +155,7 @@ typedef struct s_ray
 	t_vec2	d_dist;
 	t_ivec2	map;
 	t_ivec2	step;
+	int		line;
 }			t_ray;
 
 typedef struct s_data
@@ -161,6 +163,7 @@ typedef struct s_data
 	t_window		*win;
 	t_map_config	*conf;
 	t_player		*player;
+	t_ray			*ray;
 }				t_data;
 
 int				parse_file(char *path, t_map_config *conf);
@@ -197,9 +200,14 @@ t_vec2			get_plane_dir(t_map_config *conf);
 
 float			f_abs(float f);
 
-void			draw(t_data *data, float dist, int x, int side);
+void			draw(t_data *data, float dist, int side);
 
 int				move(int keysym, t_data *data);
 int				turn(int keysym, t_data *data);
+
+int				get_pix_color(t_img *tex, int x, int y);
+void			img_pix_put(t_img *img, int x, int y, int color);
+int				wall_end(int height);
+int				wall_start(int height);
 
 #endif
