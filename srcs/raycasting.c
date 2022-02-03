@@ -6,102 +6,82 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:11 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/03 14:02:30 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/03 16:46:08 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+// void	print_ray_info(t_ray *ray)
+// {
+// 	printf("RAY INFO \n");
+// 	printf("DIR X : %f DIR Y : %f\n", ray->dir.x, ray->dir.y);
+// 	printf("S_DIST X : %f S_DIST Y : %f\n", ray->side_dist.x, ray->side_dist.y);
+// 	printf("D_DIST X : %f D_DIST Y : %f\n", ray->d_dist.x, ray->d_dist.y);
+// 	printf("MAP X : %d MAP Y : %d\n", ray->map.x, ray->map.y);
+// 	printf("STEP X : %d STEP Y : %d\n\n", ray->step.x, ray->step.y);
+// }
+
+static int	set_side(t_ray *ray, int dir)
+{
+	if (!dir)
+	{
+		if (ray->dir.x > 0)
+			return (EA);
+		return (WE);
+	}
+	else
+	{
+		if (ray->dir.y < 0)
+			return (NO);
+		return (SO);
+	}
+}
+
+static int	hit_loop(t_data *data, t_ray *ray)
+{
+	int	hit;
+	int	ret;
+
+	hit = 0;
+	while (!hit)
+	{
+		if (ray->side_dist.x < ray->side_dist.y)
+		{
+			ray->side_dist.x += ray->d_dist.x;
+			ray->map.x += ray->step.x;
+			ret = set_side(ray, 0);
+		}
+		else
+		{
+			ray->side_dist.y += ray->d_dist.y;
+			ray->map.y += ray->step.y;
+			ret = set_side(ray, 1);
+		}
+		if (data->conf->map[ray->map.y][ray->map.x] == '1')
+			hit = 1;
+	}
+	return (ret);
+}
+
 int	raycasting(t_data *data)
 {
-	t_vec2	player_pos;
-	t_vec2	player_dir;
-	t_vec2	plane;
+	float	perp_wall;
+	int		side;
+	t_ray	ray;
 
-
-	player_pos = data->player->pos;
-	player_dir = data->player->dir;
-	plane = data->player->plane;
-
-	int	i = 0;
+	ray = init_ray();
+	int		i;
+	i = 0;
 	while (i < WIN_W)
 	{
-		// ray position and direction
-		float	cam_x = 2 * i / (float)WIN_W - 1.0f;
-
-		float	ray_x = player_dir.x + plane.x * cam_x;
-		float	ray_y = player_dir.y + plane.y * cam_x;
-
-		//which box of the map we're in
-		int	map_x = (int)player_pos.x;
-		int	map_y = (int)player_pos.y;
-
-		//length of ray from current pos to next x or y side
-		float	side_dist_x;
-		float	side_dist_y;
-
-		//length of ray from one x or y side to next x or y side
-		float	d_dist_x = (ray_x == 0) ? FLT_MAX : f_abs(1 / ray_x);
-		float	d_dist_y = (ray_y == 0) ? FLT_MAX : f_abs(1 / ray_y);
-
-		float	perp_wall; // perpendicular wall distance
-
-		// what direction to step in x or y direction (+1 or -1)
-		int	step_x;
-		int	step_y;
-
-		int	hit = 0;	// was there a wall hit ?
-
-		int	side;		// was a NO-SO or EA-WE wall hit ?
-
-		// calculate step and initial side_dist
-		if (ray_x < 0)
-		{
-			step_x = -1;
-			side_dist_x = (player_pos.x - map_x) * d_dist_x;
-		}
-		else
-		{
-			step_x = 1;
-			side_dist_x = (map_x + 1.0f - player_pos.x) * d_dist_x;
-		}
-		if (ray_y < 0)
-		{
-			step_y = -1;
-			side_dist_y = (player_pos.y - map_y) * d_dist_y;
-		}
-		else
-		{
-			step_y = 1;
-			side_dist_y = (map_y + 1.0f - player_pos.y) * d_dist_y;
-		}
-		while (!hit)
-		{
-			if (side_dist_x < side_dist_y)
-			{
-				side_dist_x += d_dist_x;
-				map_x += step_x;
-				if (ray_x > 0)
-					side = EA;
-				else
-					side = WE;
-			}
-			else
-			{
-				side_dist_y += d_dist_y;
-				map_y += step_y;
-				if (ray_y < 0)
-					side = NO;
-				else
-					side = SO;
-			}
-			if (data->conf->map[map_y][map_x] == '1')
-				hit = 1;
-		}
+		update_ray(data, i, &ray);
+		side = hit_loop(data, &ray);
 		if (side > 1)
-			perp_wall = (side_dist_x - d_dist_x);
+			perp_wall = (ray.side_dist.x - ray.d_dist.x);
 		else
-			perp_wall = (side_dist_y - d_dist_y);
+			perp_wall = (ray.side_dist.y - ray.d_dist.y);
+
 		draw(data, perp_wall, i, side);
 		i++;
 	}

@@ -29,6 +29,7 @@ SRCS				=	check_map.c\
 						parsing.c\
 						raycasting.c\
 						rc_init.c\
+						rc_update.c\
 						rc_utils.c\
 						set_colors.c\
 						set_textures.c\

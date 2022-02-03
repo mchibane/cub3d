@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:59:14 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/03 14:00:45 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:29:30 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,16 @@ static int	set_start(t_map_config	*conf)
 		i++;
 	}
 	return (0);
+}
+
+t_player	init_player(t_map_config *conf)
+{
+	t_player	ret;
+
+	ret.pos = get_player_pos(conf->map);
+	ret.dir = get_player_dir(conf);
+	ret.plane = get_plane_dir(conf);
+	return (ret);
 }
 
 void	envp_error(char **envp)

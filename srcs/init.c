@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 14:10:47 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/01 17:03:50 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:11:18 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static t_texture	init_texture(void)
 	ret.path = NULL;
 	ret.exists = 0;
 	ret.img = init_img();
+	ret.h = 64;
+	ret.w = 64;
 	return (ret);
 }
 

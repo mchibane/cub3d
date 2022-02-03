@@ -5,19 +5,39 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/01 20:46:59 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/03 14:00:15 by mchibane         ###   ########.fr       */
+/*   Created: 2022/02/03 14:41:08 by mchibane          #+#    #+#             */
+/*   Updated: 2022/02/03 16:19:57 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_player	init_player(t_map_config *conf)
+static t_vec2	empty_vec2(void)
 {
-	t_player	ret;
+	t_vec2	ret;
 
-	ret.pos = get_player_pos(conf->map);
-	ret.dir = get_player_dir(conf);
-	ret.plane = get_plane_dir(conf);
+	ret.x = 0.0f;
+	ret.y = 0.0f;
+	return (ret);
+}
+
+static t_ivec2	empty_ivec2(void)
+{
+	t_ivec2	ret;
+
+	ret.x = 0;
+	ret.y = 0;
+	return (ret);
+}
+
+t_ray	init_ray(void)
+{
+	t_ray	ret;
+
+	ret.dir = empty_vec2();
+	ret.side_dist = empty_vec2();
+	ret.d_dist = empty_vec2();
+	ret.map = empty_ivec2();
+	ret.step = empty_ivec2();
 	return (ret);
 }

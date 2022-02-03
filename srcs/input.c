@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:03 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/03 14:06:42 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/03 16:39:55 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	rotate(t_data	*data, int keysymm)
 		* cos(dir * R_SP) - data->player->plane.y * sin(dir * R_SP);
 	data->player->plane.y = old_plane_x
 		* sin(dir * R_SP) + data->player->plane.y * cos(dir * R_SP);
-	printf("DIR X : %f DIR Y : %f\n\n", data->player->dir.x, data->player->dir.y);
 }
 
 void	walk(t_data	*data, int keysym)

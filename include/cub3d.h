@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:58:45 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/03 13:59:50 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/03 16:37:35 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,12 @@ typedef struct s_vec2
 	float	y;
 }				t_vec2;
 
+typedef struct s_ivec2
+{
+	int	x;
+	int	y;
+}				t_ivec2;
+
 /*
 **	MLX RELATED STRUCTS
 */
@@ -126,12 +132,29 @@ typedef struct s_map_config
 	char		spawn_dir;
 }				t_map_config;
 
+/*
+**	PLAYER POS & DIR
+*/
+
 typedef struct s_player
 {
 	t_vec2	pos;
 	t_vec2	dir;
 	t_vec2	plane;
 }				t_player;
+
+/*
+**	RAY STRUCT
+*/
+
+typedef struct s_ray
+{
+	t_vec2	dir;
+	t_vec2	side_dist;
+	t_vec2	d_dist;
+	t_ivec2	map;
+	t_ivec2	step;
+}			t_ray;
 
 typedef struct s_data
 {
@@ -143,7 +166,8 @@ typedef struct s_data
 int				parse_file(char *path, t_map_config *conf);
 t_map_config	init_map_conf(void);
 t_window		init_window(void);
-t_player		init_player(t_map_config *conf);
+t_ray			init_ray(void);
+void			update_ray(t_data *data, int i, t_ray *ray);
 
 void			print_map_conf(t_map_config	conf);
 int				print_error(char *s);
