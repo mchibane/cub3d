@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 19:16:59 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/03 19:43:45 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/03 20:07:11 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ static int	init_texture(t_texture *tex, t_window *win)
 	tex->w = set_width(info);
 	tex->h = set_height(info);
 	free(info);
-	printf("TEX H : %d TEX W : %d\n", tex->h, tex->w);
 	return (0);
 }
 
