@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:03 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/03 20:06:59 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/04 15:07:57 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,10 @@ void	walk(t_data	*data, int keysym)
 		dir = -1;
 	x = data->player->pos.x + (dir * dir_x * M_SP);
 	y = data->player->pos.y + (dir * dir_y * M_SP);
-	if (data->conf->map[(int)(y)][(int)(x)] != '1')
-	{
-		data->player->pos.x = x;
+	if (data->conf->map[(int)(y)][(int)(data->player->pos.x)] == '0')
 		data->player->pos.y = y;
-	}
+	if (data->conf->map[(int)(data->player->pos.y)][(int)(x)] == '0')
+		data->player->pos.x = x;
 }
 
 void	strafe(t_data *data, int keysym)
@@ -70,11 +69,10 @@ void	strafe(t_data *data, int keysym)
 	dir_y = data->player->plane.y;
 	x = data->player->pos.x + (dir * dir_x * S_SP);
 	y = data->player->pos.y + (dir * dir_y * S_SP);
-	if (data->conf->map[(int)(y)][(int)(x)] != '1')
-	{
-		data->player->pos.x = x;
+	if (data->conf->map[(int)(y)][(int)(data->player->pos.x)] == '0')
 		data->player->pos.y = y;
-	}
+	if (data->conf->map[(int)(data->player->pos.y)][(int)(x)] == '0')
+		data->player->pos.x = x;
 }
 
 int	input(int keysym, t_data *data)

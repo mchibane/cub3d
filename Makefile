@@ -9,7 +9,7 @@ LIBFT_DIR			=	libft/
 MLX_DIR				=	mlx/
 
 CC					=	gcc
-CFLAGS				=	-Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS				=	-Wall -Wextra -Werror -g -fsanitize=address
 INC					=	-I$(HEAD_DIR) -I$(LIBFT_DIR)$(HEAD_DIR) -I$(LIBFT_DIR)$(LIBFT_DIR) -I$(MLX_DIR)
 DEPENDENCIES		=	-L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lbsd
 RM					=	rm -rf
@@ -22,6 +22,7 @@ SRCS				=	check_map.c\
 						draw.c\
 						exit.c\
 						free.c\
+						hooks.c\
 						init.c\
 						input.c\
 						main.c\

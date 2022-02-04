@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:58:45 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/03 18:57:59 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/04 14:38:31 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,17 @@ typedef struct s_data
 	t_ray			*ray;
 }				t_data;
 
+typedef struct s_keys
+{
+	int	w;
+	int	a;
+	int	s;
+	int	d;
+	int	esc;
+	int	left;
+	int	right;
+}				t_keys;
+
 int				parse_file(char *path, t_map_config *conf);
 t_map_config	init_map_conf(void);
 t_window		init_window(void);
@@ -209,5 +220,7 @@ int				get_pix_color(t_img *tex, int x, int y);
 void			img_pix_put(t_img *img, int x, int y, int color);
 int				wall_end(int height);
 int				wall_start(int height);
+
+void			hooks(t_data *data);
 
 #endif

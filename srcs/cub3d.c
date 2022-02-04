@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 18:39:31 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/03 16:56:05 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/04 14:49:22 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,7 @@ int	cub3d(t_map_config *conf, t_player *player)
 	win = init_window();
 	data = init_data(conf, player, &win);
 	if (!set_textures(conf, &win))
-	{
-		mlx_loop_hook(data.win->mlx_ptr, &raycasting, &data);
-		mlx_hook(data.win->win_ptr, KeyPress, KeyPressMask, &input, &data);
-		mlx_hook(data.win->win_ptr, DestroyNotify, StructureNotifyMask,
-			&c3d_exit, &data);
-		mlx_loop(data.win->mlx_ptr);
-	}
+		hooks(&data);
 	else
 	{
 		printf("Error\nTextures must be .xpm format.\n");
