@@ -6,20 +6,20 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:03 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/04 15:07:57 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/04 17:51:25 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	rotate(t_data	*data, int keysymm)
+void	rotate(t_data	*data)
 {
 	float	old_dir_x;
 	float	old_plane_x;
 	int		dir;
 
 	dir = 1;
-	if (keysymm == XK_Left)
+	if (data->keys->left)
 		dir *= -1;
 	old_dir_x = data->player->dir.x;
 	old_plane_x = data->player->plane.x;
@@ -33,7 +33,7 @@ void	rotate(t_data	*data, int keysymm)
 		* sin(dir * R_SP) + data->player->plane.y * cos(dir * R_SP);
 }
 
-void	walk(t_data	*data, int keysym)
+void	walk(t_data	*data)
 {
 	int		dir;
 	float	dir_x;
@@ -44,7 +44,7 @@ void	walk(t_data	*data, int keysym)
 	dir = 1;
 	dir_x = data->player->dir.x;
 	dir_y = data->player->dir.y;
-	if (keysym == XK_s)
+	if (data->keys->s)
 		dir = -1;
 	x = data->player->pos.x + (dir * dir_x * M_SP);
 	y = data->player->pos.y + (dir * dir_y * M_SP);
@@ -54,7 +54,7 @@ void	walk(t_data	*data, int keysym)
 		data->player->pos.x = x;
 }
 
-void	strafe(t_data *data, int keysym)
+void	strafe(t_data *data)
 {
 	int		dir;
 	float	dir_x;
@@ -63,7 +63,7 @@ void	strafe(t_data *data, int keysym)
 	float	y;
 
 	dir = 1;
-	if (keysym == XK_a)
+	if (data->keys->a)
 		dir = -1;
 	dir_x = data->player->plane.x;
 	dir_y = data->player->plane.y;
@@ -75,15 +75,18 @@ void	strafe(t_data *data, int keysym)
 		data->player->pos.x = x;
 }
 
-int	input(int keysym, t_data *data)
+int	input(t_data *data)
 {
-	if (keysym == XK_Escape)
-		c3d_exit(data);
-	else if (keysym == XK_Left || keysym == XK_Right)
-		rotate(data, keysym);
-	else if (keysym == XK_w || keysym == XK_s)
-		walk(data, keysym);
-	else if (keysym == XK_a || keysym == XK_d)
-		strafe(data, keysym);
+	if (data->keys->esc)
+	{
+		mlx_loop_end(data->win->mlx_ptr);
+		return (0);
+	}
+	if (data->keys->left || data->keys->right)
+		rotate(data);
+	if (data->keys->w || data->keys->s)
+		walk(data);
+	if (data->keys->a|| data->keys->d)
+		strafe(data);
 	return (0);
 }

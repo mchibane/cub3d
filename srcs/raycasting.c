@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:11 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/03 18:15:56 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/04 17:33:49 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	raycasting(t_data *data)
 	ray = init_ray();
 	i = 0;
 	data->ray = &ray;
+	input(data);
 	while (i < WIN_W)
 	{
 		update_ray(data, i, &ray);

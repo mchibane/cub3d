@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:58:45 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/04 14:38:31 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/04 17:39:49 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@
 # define WIN_W 1280
 # define WIN_H 720
 
-# define FOV 0.6f
+# define FOV 0.9f
 
-# define M_SP 0.5f
-# define R_SP 0.07f
+# define M_SP 0.25f
+# define R_SP 0.09f
 # define S_SP 0.1f
 
 # define RED 0xff0000
@@ -158,14 +158,6 @@ typedef struct s_ray
 	int		line;
 }			t_ray;
 
-typedef struct s_data
-{
-	t_window		*win;
-	t_map_config	*conf;
-	t_player		*player;
-	t_ray			*ray;
-}				t_data;
-
 typedef struct s_keys
 {
 	int	w;
@@ -176,6 +168,15 @@ typedef struct s_keys
 	int	left;
 	int	right;
 }				t_keys;
+
+typedef struct s_data
+{
+	t_window		*win;
+	t_map_config	*conf;
+	t_player		*player;
+	t_ray			*ray;
+	t_keys			*keys;
+}				t_data;
 
 int				parse_file(char *path, t_map_config *conf);
 t_map_config	init_map_conf(void);
@@ -203,7 +204,7 @@ int				check_map(char **map);
 int				cub3d(t_map_config *conf, t_player *ray);
 int				c3d_exit(t_data *data);
 
-int				input(int keysym, t_data *data);
+int				input(t_data *data);
 int				raycasting(t_data *data);
 t_vec2			get_player_pos(char **map);
 t_vec2			get_player_dir(t_map_config	*conf);
@@ -222,5 +223,9 @@ int				wall_end(int height);
 int				wall_start(int height);
 
 void			hooks(t_data *data);
+
+t_keys			init_keys(void);
+int				key_press(int keysym, t_data *data);
+int				key_release(int keysym, t_data *data);
 
 #endif
