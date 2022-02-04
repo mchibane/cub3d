@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:03 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/04 17:51:25 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/04 18:08:31 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	input(t_data *data)
 		rotate(data);
 	if (data->keys->w || data->keys->s)
 		walk(data);
-	if (data->keys->a|| data->keys->d)
+	if (data->keys->a || data->keys->d)
 		strafe(data);
 	return (0);
 }
