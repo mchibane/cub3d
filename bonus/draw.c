@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:52:40 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/03 18:57:04 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/04 23:00:19 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	get_text_x(t_data *data, t_texture tex, float dist, int side)
 		wall_x = data->player->pos.x + dist * data->ray->dir.x;
 	wall_x -= floorf((wall_x));
 	ret = (int)(wall_x * tex.w);
-	if (side == EA || side == NO)
+	if (side == SO || side == WE)
 		ret = tex.w - ret - 1;
 	return (ret);
 }
