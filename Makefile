@@ -12,7 +12,7 @@ BONUS_DIR			=	bonus/
 B_OBJS_DIR			=	$(BONUS_DIR)objs/
 
 CC					=	gcc
-CFLAGS				=	-Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS				=	-Wall -Wextra -Werror -g #-fsanitize=address
 INC					=	-I$(HEAD_DIR) -I$(LIBFT_DIR)$(HEAD_DIR) -I$(LIBFT_DIR)$(LIBFT_DIR) -I$(MLX_DIR)
 DEPENDENCIES		=	-L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lbsd
 RM					=	rm -rf
@@ -42,28 +42,28 @@ SRCS				=	check_map.c\
 						set_textures.c\
 						utils.c\
 
-B_SRCS				=	check_map.c\
-						cub3d.c\
-						draw_utils.c\
-						draw.c\
-						exit.c\
-						free.c\
-						hooks.c\
-						init.c\
-						input.c\
-						keys.c\
-						main.c\
-						map_fill.c\
-						map_parsing.c\
-						minimap.c\
-						parsing.c\
-						raycasting.c\
-						rc_init.c\
-						rc_update.c\
-						rc_utils.c\
-						set_colors.c\
-						set_textures.c\
-						utils.c\
+B_SRCS				=	check_map_bonus.c\
+						cub3d_bonus.c\
+						draw_utils_bonus.c\
+						draw_bonus.c\
+						exit_bonus.c\
+						free_bonus.c\
+						hooks_bonus.c\
+						init_bonus.c\
+						input_bonus.c\
+						keys_bonus.c\
+						main_bonus.c\
+						map_fill_bonus.c\
+						map_parsing_bonus.c\
+						minimap_bonus.c\
+						parsing_bonus.c\
+						raycasting_bonus.c\
+						rc_init_bonus.c\
+						rc_update_bonus.c\
+						rc_utils_bonus.c\
+						set_colors_bonus.c\
+						set_textures_bonus.c\
+						utils_bonus.c\
 
 OBJS				=	$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 B_OBJS				=	$(addprefix $(B_OBJS_DIR), $(B_SRCS:.c=.o))
