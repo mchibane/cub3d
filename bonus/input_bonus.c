@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input.c                                            :+:      :+:    :+:   */
+/*   input_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:03 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/05 02:17:37 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/05 18:39:53 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	rotate(t_data	*data, int x)
 	int		dir;
 
 	dir = 0;
-	if (x > WIN_W / 2)
+	if (x > WIN_W / 2 || data->keys->right)
 		dir++;
-	else
+	if (x < WIN_W / 2 || data->keys->left)
 		dir--;
 	old_dir_x = data->player->dir.x;
 	old_plane_x = data->player->plane.x;
@@ -82,30 +82,37 @@ void	strafe(t_data *data)
 		data->player->pos.x = x;
 }
 
-int	input(t_data *data)
+void	mouse_rotate(t_data *data)
 {
-	static int	x;
+	static int	x = 0;
+	int			now;
 	int			y;
 
-	x = 0;
 	y = 0;
-	mlx_mouse_hide(data->win->mlx_ptr, data->win->win_ptr);
+	now = 0;
 	mlx_mouse_get_pos(data->win->mlx_ptr, data->win->win_ptr, &x, &y);
+	mlx_mouse_get_pos(data->win->mlx_ptr, data->win->win_ptr, &now, &y);
+	if (x != WIN_H / 2 || data->keys->left || data->keys->right)
+		rotate(data, x);
+	if (now == x)
+		mlx_mouse_move(data->win->mlx_ptr, data->win->win_ptr,
+			WIN_W / 2, WIN_H);
+}
+
+int	input(t_data *data)
+{
 	if (data->keys->esc)
 	{
 		mlx_loop_end(data->win->mlx_ptr);
 		return (0);
 	}
-	if (x != WIN_W / 2)
-		rotate(data, x);
+	if (data->keys->mouse_mov)
+		mouse_rotate(data);
+	else if (data->keys->left || data->keys->right)
+		rotate(data, WIN_W / 2);
 	if (data->keys->w || data->keys->s)
 		walk(data);
 	if (data->keys->a || data->keys->d)
 		strafe(data);
-	int now;
-	now = 0;
-	mlx_mouse_get_pos(data->win->mlx_ptr, data->win->win_ptr, &now, &y);
-	if (now == x)
-		mlx_mouse_move(data->win->mlx_ptr, data->win->win_ptr, WIN_W / 2, WIN_H / 2);
 	return (0);
 }

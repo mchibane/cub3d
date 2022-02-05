@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:58:45 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/05 02:28:17 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/05 18:01:03 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,7 @@ typedef struct s_keys
 	int	left;
 	int	right;
 	int	tab;
+	int	mouse_mov;
 }				t_keys;
 
 typedef struct s_data

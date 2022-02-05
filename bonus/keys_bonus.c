@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys.c                                             :+:      :+:    :+:   */
+/*   keys_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 15:11:37 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/05 01:02:37 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/05 18:38:04 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_keys	init_keys(void)
 	ret.left = 0;
 	ret.right = 0;
 	ret.tab = 0;
+	ret.mouse_mov = 0;
 	return (ret);
 }
 
@@ -45,6 +46,8 @@ int	key_press(int keysym, t_data *data)
 		data->keys->right = 1;
 	if (keysym == XK_Tab)
 		data->keys->tab = !(data->keys->tab);
+	if (keysym == XK_h)
+		data->keys->mouse_mov = !(data->keys->mouse_mov);
 	return (0);
 }
 
