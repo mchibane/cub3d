@@ -55,6 +55,7 @@ B_SRCS				=	check_map.c\
 						main.c\
 						map_fill.c\
 						map_parsing.c\
+						minimap.c\
 						parsing.c\
 						raycasting.c\
 						rc_init.c\

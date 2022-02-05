@@ -6,11 +6,12 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:03 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/04 18:08:31 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/05 00:52:25 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "bonus.h"
 
 void	rotate(t_data	*data)
 {
@@ -18,9 +19,11 @@ void	rotate(t_data	*data)
 	float	old_plane_x;
 	int		dir;
 
-	dir = 1;
+	dir = 0;
+	if (data->keys->right)
+		dir++;
 	if (data->keys->left)
-		dir *= -1;
+		dir--;
 	old_dir_x = data->player->dir.x;
 	old_plane_x = data->player->plane.x;
 	data->player->dir.x = old_dir_x
@@ -41,11 +44,13 @@ void	walk(t_data	*data)
 	float	x;
 	float	y;
 
-	dir = 1;
+	dir = 0;
 	dir_x = data->player->dir.x;
 	dir_y = data->player->dir.y;
 	if (data->keys->s)
-		dir = -1;
+		dir--;
+	if (data->keys->w)
+		dir++;
 	x = data->player->pos.x + (dir * dir_x * M_SP);
 	y = data->player->pos.y + (dir * dir_y * M_SP);
 	if (data->conf->map[(int)(y)][(int)(data->player->pos.x)] == '0')
@@ -62,9 +67,11 @@ void	strafe(t_data *data)
 	float	x;
 	float	y;
 
-	dir = 1;
+	dir = 0;
 	if (data->keys->a)
-		dir = -1;
+		dir--;
+	if (data->keys->d)
+		dir++;
 	dir_x = data->player->plane.x;
 	dir_y = data->player->plane.y;
 	x = data->player->pos.x + (dir * dir_x * S_SP);

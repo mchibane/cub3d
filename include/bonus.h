@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 18:29:56 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/04 18:30:19 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/04 21:46:49 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,14 @@
 # define BONUS_H
 
 # include "cub3d.h"
+
+typedef struct s_minimap
+{
+	int	width;
+	int	height;
+	int	tile_size;
+}				t_minimap;
+
+void	minimap(t_data *data);
 
 #endif

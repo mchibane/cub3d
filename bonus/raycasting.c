@@ -6,11 +6,12 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:11 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/04 17:33:49 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/04 23:47:01 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "bonus.h"
 
 static int	set_side(t_ray *ray, int dir)
 {
@@ -54,6 +55,15 @@ static int	hit_loop(t_data *data, t_ray *ray)
 	return (ret);
 }
 
+static void	redisplay(t_data *data)
+{
+	if (data->keys->tab)
+		minimap(data);
+	if (data->win->win_ptr != NULL)
+		mlx_put_image_to_window(data->win->mlx_ptr,
+			data->win->win_ptr, data->win->img.img_ptr, 0, 0);
+}
+
 int	raycasting(t_data *data)
 {
 	float	perp_wall;
@@ -77,8 +87,6 @@ int	raycasting(t_data *data)
 		i++;
 	}
 	data->ray = NULL;
-	if (data->win->win_ptr != NULL)
-		mlx_put_image_to_window(data->win->mlx_ptr,
-			data->win->win_ptr, data->win->img.img_ptr, 0, 0);
+	redisplay(data);
 	return (0);
 }
