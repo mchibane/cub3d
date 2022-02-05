@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   draw_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:52:40 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/04 23:00:19 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/05 18:58:16 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	wall(t_data *data, t_texture tex, float dist, int height)
 	tex_x = get_text_x(data, tex, dist, tex.side);
 	step = 1.0f * tex.h / height;
 	y = wall_start(height);
-	tex_pos = (y - WIN_H / 2 - height / 2) * step;
+	tex_pos = (y - (WIN_H >> 1) - (height >> 1)) * step;
 	while (y < wall_end(height))
 	{
 		tex_y = (int)tex_pos & (tex.h - 1);

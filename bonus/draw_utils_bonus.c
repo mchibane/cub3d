@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_utils.c                                       :+:      :+:    :+:   */
+/*   draw_utils_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 18:50:47 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/03 18:51:31 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/05 18:58:45 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	wall_end(int height)
 {
 	int	ret;
 
-	ret = (height / 2) + (WIN_H / 2);
+	ret = (height >> 1) + (WIN_H >> 1);
 	if (ret >= WIN_H)
 		ret = WIN_H - 1;
 	return (ret);
@@ -51,7 +51,7 @@ int	wall_start(int height)
 {
 	int	ret;
 
-	ret = (-height / 2) + (WIN_H / 2);
+	ret = (-height >> 1) + (WIN_H >> 1);
 	if (ret < 0)
 		ret = 0;
 	return (ret);
