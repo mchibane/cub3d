@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 12:58:45 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/04 23:35:43 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/05 02:28:17 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 # define FOV 0.9f
 
 # define M_SP 0.25f
-# define R_SP 0.09f
+# define R_SP 0.12f
 # define S_SP 0.1f
 
 # define RED 0xff0000

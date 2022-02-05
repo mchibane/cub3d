@@ -6,23 +6,23 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:03 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/05 00:52:25 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/05 02:17:37 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "bonus.h"
 
-void	rotate(t_data	*data)
+void	rotate(t_data	*data, int x)
 {
 	float	old_dir_x;
 	float	old_plane_x;
 	int		dir;
 
 	dir = 0;
-	if (data->keys->right)
+	if (x > WIN_W / 2)
 		dir++;
-	if (data->keys->left)
+	else
 		dir--;
 	old_dir_x = data->player->dir.x;
 	old_plane_x = data->player->plane.x;
@@ -84,16 +84,28 @@ void	strafe(t_data *data)
 
 int	input(t_data *data)
 {
+	static int	x;
+	int			y;
+
+	x = 0;
+	y = 0;
+	mlx_mouse_hide(data->win->mlx_ptr, data->win->win_ptr);
+	mlx_mouse_get_pos(data->win->mlx_ptr, data->win->win_ptr, &x, &y);
 	if (data->keys->esc)
 	{
 		mlx_loop_end(data->win->mlx_ptr);
 		return (0);
 	}
-	if (data->keys->left || data->keys->right)
-		rotate(data);
+	if (x != WIN_W / 2)
+		rotate(data, x);
 	if (data->keys->w || data->keys->s)
 		walk(data);
 	if (data->keys->a || data->keys->d)
 		strafe(data);
+	int now;
+	now = 0;
+	mlx_mouse_get_pos(data->win->mlx_ptr, data->win->win_ptr, &now, &y);
+	if (now == x)
+		mlx_mouse_move(data->win->mlx_ptr, data->win->win_ptr, WIN_W / 2, WIN_H / 2);
 	return (0);
 }
