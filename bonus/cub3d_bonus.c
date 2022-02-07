@@ -6,11 +6,11 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 18:39:31 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/07 16:32:38 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/07 16:57:58 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "bonus.h"
 
 static t_data	init_data(t_map_config *conf, t_player *player,
 	t_window *win, t_keys *keys)

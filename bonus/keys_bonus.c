@@ -6,11 +6,11 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 15:11:37 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/05 18:38:04 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/07 16:58:47 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "bonus.h"
 
 t_keys	init_keys(void)
 {

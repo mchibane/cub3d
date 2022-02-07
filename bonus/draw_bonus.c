@@ -6,11 +6,11 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:52:40 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/05 18:58:16 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/07 16:58:05 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "bonus.h"
 
 static int	get_text_x(t_data *data, t_texture tex, float dist, int side)
 {

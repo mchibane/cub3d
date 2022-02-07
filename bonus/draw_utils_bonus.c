@@ -6,11 +6,11 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 18:50:47 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/05 18:58:45 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/07 16:58:11 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "bonus.h"
 
 int	get_pix_color(t_img *tex, int x, int y)
 {

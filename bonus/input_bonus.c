@@ -6,11 +6,10 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:03 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/07 15:48:17 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/07 16:58:41 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
 #include "bonus.h"
 
 void	rotate(t_data	*data, int x)
