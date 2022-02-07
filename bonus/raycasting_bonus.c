@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:11 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/07 16:59:30 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/07 18:14:26 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	hit_loop(t_data *data, t_ray *ray)
 			ray->map.y += ray->step.y;
 			ret = set_side(ray, 1);
 		}
-		if (data->conf->map[ray->map.y][ray->map.x] == '1')
+		if (ft_ischarset(data->conf->map[ray->map.y][ray->map.x], WALL))
 			hit = 1;
 	}
 	return (ret);
@@ -61,6 +61,16 @@ static void	redisplay(t_data *data)
 	if (data->win->win_ptr != NULL)
 		mlx_put_image_to_window(data->win->mlx_ptr,
 			data->win->win_ptr, data->win->img.img_ptr, 0, 0);
+}
+
+static int	door_hit(t_data *data, int side)
+{
+	if (data->conf->map[data->ray->map.y][data->ray->map.x] == 'C')
+	{
+		data->conf->d.side = side;
+		return (1);
+	}
+	return (0);
 }
 
 int	raycasting(t_data *data)
@@ -82,7 +92,7 @@ int	raycasting(t_data *data)
 			perp_wall = (ray.side_dist.x - ray.d_dist.x);
 		else
 			perp_wall = (ray.side_dist.y - ray.d_dist.y);
-		draw(data, perp_wall, side);
+		draw(data, perp_wall, side, door_hit(data, side));
 		i++;
 	}
 	data->ray = NULL;

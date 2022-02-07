@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:52:40 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/07 16:58:05 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/07 19:46:55 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static void	wall(t_data *data, t_texture tex, float dist, int height)
 
 	tex_x = get_text_x(data, tex, dist, tex.side);
 	step = 1.0f * tex.h / height;
-	y = wall_start(height);
-	tex_pos = (y - (WIN_H >> 1) - (height >> 1)) * step;
-	while (y < wall_end(height))
+	y = wall_start(height) - 1;
+	tex_pos = (y - (WIN_H >> 1) + (height >> 1)) * step;
+	while (y < wall_end(height) - 1)
 	{
 		tex_y = (int)tex_pos & (tex.h - 1);
 		tex_pos += step;
@@ -51,19 +51,21 @@ static void	wall(t_data *data, t_texture tex, float dist, int height)
 	}
 }
 
-static void	draw_wall(t_data *data, float dist, int side, int height)
+static void	draw_wall(t_data *data, float dist, int side, int door)
 {
-	if (side == NO)
-		wall(data, data->conf->no, dist, height);
-	if (side == SO)
-		wall(data, data->conf->so, dist, height);
-	if (side == EA)
-		wall(data, data->conf->ea, dist, height);
-	if (side == WE)
-		wall(data, data->conf->we, dist, height);
+	if (door)
+		wall(data, data->conf->d, dist, (int)(WIN_H / dist));
+	else if (side == NO)
+		wall(data, data->conf->no, dist, (int)(WIN_H / dist));
+	else if (side == SO)
+		wall(data, data->conf->so, dist, (int)(WIN_H / dist));
+	else if (side == EA)
+		wall(data, data->conf->ea, dist, (int)(WIN_H / dist));
+	else if (side == WE)
+		wall(data, data->conf->we, dist, (int)(WIN_H / dist));
 }
 
-void	draw(t_data *data, float dist, int side)
+void	draw(t_data *data, float dist, int side, int door)
 {
 	int	height;
 	int	y;
@@ -73,7 +75,7 @@ void	draw(t_data *data, float dist, int side)
 	while (y < wall_start(height))
 		img_pix_put(&data->win->img, data->ray->line, y++,
 			data->conf->c.color);
-	draw_wall(data, dist, side, height);
+	draw_wall(data, dist, side, door);
 	y = wall_end(height);
 	while (y < WIN_H)
 		img_pix_put(&data->win->img, data->ray->line, y++,

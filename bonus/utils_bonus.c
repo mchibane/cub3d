@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 14:15:05 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/07 17:00:09 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/07 17:13:31 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	check_textures(t_map_config *conf)
 		&& conf->no.exists
 		&& conf->so.exists
 		&& conf->f.exists
-		&& conf->c.exists);
+		&& conf->c.exists
+		&& conf->d.exists);
 }
 
 int	tab_len(char **tab)

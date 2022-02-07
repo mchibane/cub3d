@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 18:29:56 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/07 16:56:47 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/07 18:52:50 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 
 # define F_TOK "F"
 # define C_TOK "C"
+# define D_TOK "D"
 # define N_TOK "NO"
 # define S_TOK "SO"
 # define W_TOK "WE"
@@ -36,9 +37,11 @@
 # define E_ARGS "Error\nUsage: ./cub3D [map].cub"
 # define E_ENVI "Error\nPlease don't do this !"
 
-# define MAP_CHARSET " 01NSWE"
+# define MAP_CHARSET " 01NSWEC0"
 # define SPAWN "NWES"
-# define CHECK_CHARSET "0NSWED"
+# define CHECK_CHARSET "0NSWECO"
+# define WALK "0NSEWO"
+# define WALL "1C"
 
 # define WIN_W 1280
 # define WIN_H 720
@@ -60,6 +63,7 @@ typedef enum e_side
 	SO,
 	EA,
 	WE,
+	DO,
 	MAX
 }			t_side;
 
@@ -171,6 +175,7 @@ typedef struct s_keys
 	int	right;
 	int	tab;
 	int	mouse_mov;
+	int	open;
 }				t_keys;
 
 typedef struct s_data
@@ -223,7 +228,7 @@ t_vec2			get_plane_dir(t_map_config *conf);
 
 float			f_abs(float f);
 
-void			draw(t_data *data, float dist, int side);
+void			draw(t_data *data, float dist, int side, int door);
 
 int				move(int keysym, t_data *data);
 int				turn(int keysym, t_data *data);

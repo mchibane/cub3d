@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 14:45:16 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/07 16:57:46 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/07 17:16:16 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int	check_map(char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			if (map[i][j] == '0' || ft_ischarset(map[i][j], SPAWN))
+			if (ft_ischarset(map[i][j], CHECK_CHARSET))
 			{
 				if (check_close(map, i, j))
 					return (1);

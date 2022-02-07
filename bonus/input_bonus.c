@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:03 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/07 16:58:41 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/07 18:53:15 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,11 @@ void	walk(t_data	*data)
 		dir++;
 	x = data->player->pos.x + (dir * dir_x * M_SP);
 	y = data->player->pos.y + (dir * dir_y * M_SP);
-	if (data->conf->map[(int)(y)][(int)(data->player->pos.x)] == '0')
+	if (ft_ischarset(data->conf->map[(int)(y)][(int)(data->player->pos.x)],
+		WALK))
 		data->player->pos.y = y;
-	if (data->conf->map[(int)(data->player->pos.y)][(int)(x)] == '0')
+	if (ft_ischarset(data->conf->map[(int)(data->player->pos.y)][(int)(x)],
+		WALK))
 		data->player->pos.x = x;
 }
 
@@ -75,9 +77,11 @@ void	strafe(t_data *data)
 	dir_y = data->player->plane.y;
 	x = data->player->pos.x + (dir * dir_x * S_SP);
 	y = data->player->pos.y + (dir * dir_y * S_SP);
-	if (data->conf->map[(int)(y)][(int)(data->player->pos.x)] == '0')
+	if (ft_ischarset(data->conf->map[(int)(y)][(int)(data->player->pos.x)],
+		WALK))
 		data->player->pos.y = y;
-	if (data->conf->map[(int)(data->player->pos.y)][(int)(x)] == '0')
+	if (ft_ischarset(data->conf->map[(int)(data->player->pos.y)][(int)(x)],
+		WALK))
 		data->player->pos.x = x;
 }
 
@@ -98,6 +102,20 @@ void	mouse_rotate(t_data *data)
 			WIN_W >> 1, WIN_H - 2);
 }
 
+void	open_door(t_data *data)
+{
+	int	y;
+	int	x;
+
+	y = (int)(data->player->pos.y + data->player->dir.y);
+	x = (int)(data->player->pos.x + data->player->dir.x);
+	if (data->conf->map[y][x] == 'C')
+		data->conf->map[y][x] = 'O';
+	else if (data->conf->map[y][x] == 'O')
+		data->conf->map[y][x] = 'C';
+	data->keys->open = 0;
+}
+
 int	input(t_data *data)
 {
 	if (data->keys->esc)
@@ -113,5 +131,7 @@ int	input(t_data *data)
 		walk(data);
 	if (data->keys->a || data->keys->d)
 		strafe(data);
+	if (data->keys->open)
+		open_door(data);
 	return (0);
 }

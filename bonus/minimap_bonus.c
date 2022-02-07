@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 21:10:45 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/07 16:46:02 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/07 18:19:19 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static int	get_color(int i, int j, t_data *data)
 		return (0x3d3d3d);
 	else if (data->conf->map[i][j] == '0')
 		return (0xcfcfcf);
+	else if (data->conf->map[i][j] == 'C')
+		return (GREEN);
 	else
 		return (0x000000);
 }
