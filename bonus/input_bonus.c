@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:03 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/05 18:56:10 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/07 15:48:17 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	mouse_rotate(t_data *data)
 		rotate(data, x);
 	if (now == x)
 		mlx_mouse_move(data->win->mlx_ptr, data->win->win_ptr,
-			WIN_W >> 1, WIN_H);
+			WIN_W >> 1, WIN_H - 2);
 }
 
 int	input(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 18:39:31 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/05 18:37:57 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/07 16:32:38 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,7 @@ int	cub3d(t_map_config *conf, t_player *player)
 	if (!set_textures(conf, &win))
 		hooks(&data);
 	else
-	{
 		printf("Error\nTextures must be .xpm format.\n");
-		c3d_exit(&data);
-	}
 	c3d_exit(&data);
 	mlx_destroy_image(data.win->mlx_ptr, data.win->img.img_ptr);
 	mlx_destroy_display(data.win->mlx_ptr);
