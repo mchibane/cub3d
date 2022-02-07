@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap.c                                          :+:      :+:    :+:   */
+/*   minimap_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 21:10:45 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/05 00:42:31 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/07 16:46:02 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	draw_tile(int i, int j, t_data *data, t_minimap *minimap)
 	x_start = j * minimap->tile_size + minimap->tile_size;
 	y_start = i * minimap->tile_size + minimap->tile_size;
 	y = y_start;
-	while (y < (i + 1) * minimap->tile_size + minimap->tile_size)
+	while (y < WIN_H && y < (i + 1) * minimap->tile_size + minimap->tile_size)
 	{
 		x = x_start;
 		while (x < (j + 1) * minimap->tile_size + minimap->tile_size)
