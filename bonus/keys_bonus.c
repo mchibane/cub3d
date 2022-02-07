@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 15:11:37 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/07 18:29:09 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/07 20:25:16 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_keys	init_keys(void)
 	ret.tab = 0;
 	ret.mouse_mov = 0;
 	ret.open = 0;
+	ret.fire = 0;
 	return (ret);
 }
 
@@ -51,6 +52,8 @@ int	key_press(int keysym, t_data *data)
 		data->keys->mouse_mov = !(data->keys->mouse_mov);
 	if (keysym == XK_e)
 		data->keys->open = 1;
+	if (keysym == XK_space)
+		data->keys->fire = 1;
 	return (0);
 }
 

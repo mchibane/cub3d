@@ -6,13 +6,13 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:03 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/07 18:53:15 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/07 21:06:19 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus.h"
 
-void	rotate(t_data	*data, int x)
+static void	rotate(t_data	*data, int x)
 {
 	float	old_dir_x;
 	float	old_plane_x;
@@ -35,7 +35,7 @@ void	rotate(t_data	*data, int x)
 		* sin(dir * R_SP) + data->player->plane.y * cos(dir * R_SP);
 }
 
-void	walk(t_data	*data)
+static void	walk(t_data	*data)
 {
 	int		dir;
 	float	dir_x;
@@ -60,7 +60,7 @@ void	walk(t_data	*data)
 		data->player->pos.x = x;
 }
 
-void	strafe(t_data *data)
+static void	strafe(t_data *data)
 {
 	int		dir;
 	float	dir_x;
@@ -85,7 +85,7 @@ void	strafe(t_data *data)
 		data->player->pos.x = x;
 }
 
-void	mouse_rotate(t_data *data)
+static void	mouse_rotate(t_data *data)
 {
 	static int	x = 0;
 	int			now;
@@ -102,19 +102,7 @@ void	mouse_rotate(t_data *data)
 			WIN_W >> 1, WIN_H - 2);
 }
 
-void	open_door(t_data *data)
-{
-	int	y;
-	int	x;
-
-	y = (int)(data->player->pos.y + data->player->dir.y);
-	x = (int)(data->player->pos.x + data->player->dir.x);
-	if (data->conf->map[y][x] == 'C')
-		data->conf->map[y][x] = 'O';
-	else if (data->conf->map[y][x] == 'O')
-		data->conf->map[y][x] = 'C';
-	data->keys->open = 0;
-}
+void	lol(t_data *data);
 
 int	input(t_data *data)
 {
@@ -133,5 +121,6 @@ int	input(t_data *data)
 		strafe(data);
 	if (data->keys->open)
 		open_door(data);
+	lol(data);
 	return (0);
 }

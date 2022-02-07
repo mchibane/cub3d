@@ -51,6 +51,7 @@ B_SRCS				=	check_map_bonus.c\
 						hooks_bonus.c\
 						init_bonus.c\
 						input_bonus.c\
+						input2_bonus.c\
 						keys_bonus.c\
 						main_bonus.c\
 						map_fill_bonus.c\

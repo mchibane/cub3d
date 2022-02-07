@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 18:29:56 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/07 20:02:10 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/07 21:07:02 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <limits.h>
+# include <sys/time.h>
 # include <float.h>
 # include <math.h>
 # include <X11/keysym.h>
@@ -178,6 +179,7 @@ typedef struct s_keys
 	int	tab;
 	int	mouse_mov;
 	int	open;
+	int	fire;
 }				t_keys;
 
 typedef struct s_data
@@ -246,6 +248,7 @@ t_keys			init_keys(void);
 int				key_press(int keysym, t_data *data);
 int				key_release(int keysym, t_data *data);
 
-void	minimap(t_data *data);
+void			minimap(t_data *data);
+void			open_door(t_data *data);
 
 #endif
