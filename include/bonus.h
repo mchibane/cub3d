@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 18:29:56 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/07 18:52:50 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/07 20:02:10 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@
 # define CHECK_CHARSET "0NSWECO"
 # define WALK "0NSEWO"
 # define WALL "1C"
+# define OPEN "O"
+# define CLOSED "C"
 
 # define WIN_W 1280
 # define WIN_H 720
@@ -49,7 +51,7 @@
 # define FOV 0.9f
 
 # define M_SP 0.18f
-# define R_SP 0.12f
+# define R_SP 0.10f
 # define S_SP 0.1f
 
 # define RED 0xff0000
