@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 13:34:26 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/07 17:25:30 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/08 14:24:30 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	get_path(char **t, t_map_config *m)
 		m->c.raw = ft_strdup(t[1]);
 	else if (ft_strequal(t[0], D_TOK) && ++m->d.exists == 1)
 		m->d.path = ft_strdup(t[1]);
+	else if (ft_strequal(t[0], G_TOK) && ++m->gun.exists == 1)
+		m->gun.path = ft_strdup(t[1]);
 	else
 		return (1);
 	return (0);
@@ -46,7 +48,6 @@ int	get_line_info(char *str, t_map_config *conf)
 	}
 	if (get_path(tab, conf))
 	{
-		printf("LOL\n");
 		free_tab(tab);
 		return (1);
 	}

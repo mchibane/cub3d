@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 19:16:59 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/07 17:34:12 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/08 13:59:48 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ int	set_textures(t_map_config *conf, t_window *win)
 		|| init_texture(&conf->so, win)
 		|| init_texture(&conf->ea, win)
 		|| init_texture(&conf->we, win)
-		|| init_texture(&conf->d, win));
+		|| init_texture(&conf->d, win)
+		|| init_texture(&conf->gun, win));
 }

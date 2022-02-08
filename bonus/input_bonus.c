@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:03 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/07 21:06:19 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/08 14:23:21 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,5 @@ int	input(t_data *data)
 		strafe(data);
 	if (data->keys->open)
 		open_door(data);
-	lol(data);
 	return (0);
 }

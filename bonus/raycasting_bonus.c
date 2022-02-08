@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 15:59:11 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/07 18:14:26 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/08 14:04:25 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static void	redisplay(t_data *data)
 {
 	if (data->keys->tab)
 		minimap(data);
+	gun(data);
 	if (data->win->win_ptr != NULL)
 		mlx_put_image_to_window(data->win->mlx_ptr,
 			data->win->win_ptr, data->win->img.img_ptr, 0, 0);

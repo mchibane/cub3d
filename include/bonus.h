@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 18:29:56 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/07 21:07:02 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/08 14:15:26 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define S_TOK "SO"
 # define W_TOK "WE"
 # define E_TOK "EA"
+# define G_TOK "G"
 
 # define E_ARGS "Error\nUsage: ./cub3D [map].cub"
 # define E_ENVI "Error\nPlease don't do this !"
@@ -136,6 +137,7 @@ typedef struct s_map_config
 	t_texture	ea;
 	t_texture	we;
 	t_texture	d;
+	t_texture	gun;
 	t_color		f;
 	t_color		c;
 	char		**map;
@@ -250,5 +252,7 @@ int				key_release(int keysym, t_data *data);
 
 void			minimap(t_data *data);
 void			open_door(t_data *data);
+
+void			gun(t_data *data);
 
 #endif

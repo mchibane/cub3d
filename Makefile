@@ -48,6 +48,7 @@ B_SRCS				=	check_map_bonus.c\
 						draw_bonus.c\
 						exit_bonus.c\
 						free_bonus.c\
+						gun_bonus.c\
 						hooks_bonus.c\
 						init_bonus.c\
 						input_bonus.c\

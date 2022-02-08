@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 14:10:47 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/07 17:07:52 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/08 14:25:19 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ t_map_config	init_map_conf(void)
 	ret.d = init_texture();
 	ret.f = init_color();
 	ret.c = init_color();
+	ret.gun = init_texture();
 	ret.map = NULL;
 	ret.spawn_dir = 0;
 	return (ret);

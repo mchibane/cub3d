@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 17:52:40 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/07 19:46:55 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/08 12:53:11 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,15 @@ static void	wall(t_data *data, t_texture tex, float dist, int height)
 
 	tex_x = get_text_x(data, tex, dist, tex.side);
 	step = 1.0f * tex.h / height;
-	y = wall_start(height) - 1;
+	y = wall_start(height);
 	tex_pos = (y - (WIN_H >> 1) + (height >> 1)) * step;
-	while (y < wall_end(height) - 1)
+	while (y < wall_end(height))
 	{
 		tex_y = (int)tex_pos & (tex.h - 1);
-		tex_pos += step;
 		if (data->win->win_ptr != NULL)
 			img_pix_put(&data->win->img, data->ray->line, y,
 				get_pix_color(&tex.img, tex_x, tex_y));
+		tex_pos += step;
 		y++;
 	}
 }
