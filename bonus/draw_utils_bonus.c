@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 18:50:47 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/07 16:58:11 by mchibane         ###   ########.fr       */
+/*   Updated: 2022/02/09 14:16:29 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	wall_end(int height)
 
 	ret = (height >> 1) + (WIN_H >> 1);
 	if (ret >= WIN_H)
-		ret = WIN_H - 1;
+		ret = WIN_H;
 	return (ret);
 }
 
