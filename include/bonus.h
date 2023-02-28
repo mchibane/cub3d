@@ -6,7 +6,7 @@
 /*   By: mchibane <mchibane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 18:29:56 by mchibane          #+#    #+#             */
-/*   Updated: 2022/02/08 14:15:26 by mchibane         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:49:32 by mchibane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define E_ARGS "Error\nUsage: ./cub3D [map].cub"
 # define E_ENVI "Error\nPlease don't do this !"
 
-# define MAP_CHARSET " 01NSWEC0"
+# define MAP_CHARSET " 01NSWECO"
 # define SPAWN "NWES"
 # define CHECK_CHARSET "0NSWECO"
 # define WALK "0NSEWO"

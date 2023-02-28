@@ -18,7 +18,7 @@ Build the project using ``make bonus`` then run it with ``./cub3d_bonus [path_to
 
 ``W`` ``A`` ``S`` ``D`` : Movement
 
-``←`` ``→`` : Look around
+``←`` ``→`` : Rotation
 
 ``TAB`` : Toggle minimap on/off
 
@@ -32,6 +32,8 @@ Build the project using ``make bonus`` then run it with ``./cub3d_bonus [path_to
 
 The program takes the path to a `.cub` file as its only parameter.
 
+### Textures
+
 The first 8 lines must contains the following :
 - ``NO`` : path to north wall texture
 - ``SO`` : path to south wall texture
@@ -41,3 +43,11 @@ The first 8 lines must contains the following :
 - ``D`` : path to door texture
 - ``F`` : floor color as comma separated RGB values (ie: `255,255,255`)
 - ``C`` : ceiling color as comma separated RGB values (ie: `255,255,255`)
+
+### The map
+
+The following lines until the end of the file describe the map with the following charset (map must be surrounded by walls):
+- ``1`` : Walls
+- ``0`` : 'Empty' space
+- ``N`` / ``S`` / ``E`` / ``W`` : Spawn location and facing direction
+- ``C`` / ``O`` : Doors (closed / open)
