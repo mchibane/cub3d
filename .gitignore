@@ -1,8 +1,6 @@
 objs/
 *.o
 *.a
-lol
-*.cub
 cub3D
 cub3D_bonus
 log.txt
